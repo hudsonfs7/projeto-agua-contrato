@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Pessoas from "./pages/Pessoas";
 import PessoasForm from "./pages/PessoasForm";
 import Projetos from "./pages/Projetos";
+import Contratos from "./pages/Contratos";
+import ContratoForm from "./pages/ContratoForm";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
 
@@ -27,6 +29,8 @@ const App = () => (
             <Route path="/pessoas/novo" element={<PessoasForm />} />
             <Route path="/pessoas/:id" element={<PessoasForm />} />
             <Route path="/projetos" element={<Projetos />} />
+            <Route path="/contratos" element={<Contratos />} />
+            <Route path="/contratos/:id/:action" element={<ContratoForm />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
