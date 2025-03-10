@@ -2,14 +2,17 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { DropletIcon, UsersIcon, FolderIcon, FileTextIcon, MenuIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   const isActive = (path: string) => {
-    return location.pathname === path;
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   const navItems = [
@@ -23,8 +26,29 @@ const NavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Detectar rolagem para adicionar sombra
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="fixed w-full top-0 bg-white/80 backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300 shadow-sm">
+    <header 
+      className={cn(
+        "fixed w-full top-0 bg-white/80 backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300",
+        isScrolled ? "shadow-md" : "shadow-sm"
+      )}
+    >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
