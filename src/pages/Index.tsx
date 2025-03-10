@@ -1,16 +1,12 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3Icon, DropletIcon, FileTextIcon, UsersIcon } from "lucide-react";
-import NavBar from "@/components/NavBar";
 import { MOCK_PROJETOS, MOCK_PESSOAS } from "@/types";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <NavBar />
-
       <div className="container mx-auto px-4 pt-24 pb-16 animate-fade-in">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">Sistema de Gestão de Projetos de Saneamento</h1>
@@ -28,7 +24,7 @@ const Index = () => {
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" variant="secondary">
-                <Link to="/projetos/novo">Novo Projeto</Link>
+                <Link to="/projetos?showForm=true">Novo Projeto</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 hover:bg-white/20">
                 <Link to="/projetos">Ver Projetos</Link>

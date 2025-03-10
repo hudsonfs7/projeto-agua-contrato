@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Projeto, Pessoa, StatusProjeto, MOCK_PROJETOS, MOCK_PESSOAS, STATUS_PROJETO_MAP } from "@/types";
@@ -15,6 +15,16 @@ const Projetos = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [projetoParaEditar, setProjetoParaEditar] = useState<Projeto | undefined>(undefined);
+  const location = useLocation();
+
+  // Check URL query parameter to automatically show the form
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    if (queryParams.get('showForm') === 'true') {
+      setShowForm(true);
+      setProjetoParaEditar(undefined);
+    }
+  }, [location]);
 
   // Conectar responsáveis aos projetos
   const projetosComRelacionamentos = projetos.map(projeto => ({
