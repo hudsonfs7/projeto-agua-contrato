@@ -3,7 +3,7 @@ import { Projeto } from "@/types";
 import StatusBadge from "./StatusBadge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DropletIcon, DropIcon, PercentIcon, BarChart2Icon, CalendarIcon, MapPinIcon } from "lucide-react";
+import { DropletIcon, DropletIcon as WaterDropIcon, PercentIcon, BarChart2Icon, CalendarIcon, MapPinIcon } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Link } from "react-router-dom";
@@ -18,12 +18,12 @@ const ProjetoCard = ({ projeto }: ProjetoCardProps) => {
       case 'agua':
         return <DropletIcon className="w-4 h-4 text-agua-600" />;
       case 'esgoto':
-        return <DropIcon className="w-4 h-4 text-gray-600" />;
+        return <WaterDropIcon className="w-4 h-4 text-gray-600" />;
       case 'agua_esgoto':
         return (
           <div className="flex space-x-1">
             <DropletIcon className="w-4 h-4 text-agua-600" />
-            <DropIcon className="w-4 h-4 text-gray-600" />
+            <WaterDropIcon className="w-4 h-4 text-gray-600" />
           </div>
         );
     }

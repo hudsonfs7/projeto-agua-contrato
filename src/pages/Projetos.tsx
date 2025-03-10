@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -107,23 +106,24 @@ const Projetos = () => {
                 />
               </div>
               
-              <Select
-                value={filtroStatus}
-                onValueChange={(value) => setFiltroStatus(value as StatusProjeto | "todos")}
-                className="w-full md:w-64"
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Filtrar por status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="todos">Todos os Status</SelectItem>
-                  {Object.entries(STATUS_PROJETO_MAP).map(([key, { label }]) => (
-                    <SelectItem key={key} value={key}>
-                      {label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <div className="w-full md:w-64">
+                <Select
+                  value={filtroStatus}
+                  onValueChange={(value) => setFiltroStatus(value as StatusProjeto | "todos")}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Filtrar por status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="todos">Todos os Status</SelectItem>
+                    {Object.entries(STATUS_PROJETO_MAP).map(([key, { label }]) => (
+                      <SelectItem key={key} value={key}>
+                        {label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
             {projetosFiltrados.length > 0 ? (
