@@ -13,9 +13,9 @@ import { ptBR } from "date-fns/locale";
 const Contratos = () => {
   const [searchTerm, setSearchTerm] = useState("");
   
-  // Filtrando apenas projetos com status APROVADO ou CONCLUIDO
+  // Filtrando apenas projetos com status aprovado ou concluido
   const projetosComContrato = MOCK_PROJETOS.filter(
-    projeto => projeto.status === "APROVADO" || projeto.status === "CONCLUIDO"
+    projeto => projeto.status === "aprovado" || projeto.status === "concluido"
   );
   
   const filteredContratos = projetosComContrato.filter(
@@ -85,8 +85,8 @@ const Contratos = () => {
                     <CardTitle>{projeto.titulo}</CardTitle>
                     <CardDescription>EVTE-{projeto.numeroEVTE}</CardDescription>
                   </div>
-                  <Badge variant={projeto.status === "CONCLUIDO" ? "default" : "outline"}>
-                    {projeto.status === "APROVADO" ? "Contrato Pendente" : "Contrato Assinado"}
+                  <Badge variant={projeto.status === "concluido" ? "default" : "outline"}>
+                    {projeto.status === "aprovado" ? "Contrato Pendente" : "Contrato Assinado"}
                   </Badge>
                 </div>
               </CardHeader>
@@ -94,7 +94,7 @@ const Contratos = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                   <div>
                     <div className="text-sm text-gray-500">Responsável</div>
-                    <div className="font-medium">{projeto.responsavel.nome}</div>
+                    <div className="font-medium">{projeto.responsavel?.nome}</div>
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">Localização</div>
@@ -113,7 +113,7 @@ const Contratos = () => {
                   </Button>
                   <Button asChild>
                     <Link to={`/contratos/${projeto.id}/gerar`}>
-                      {projeto.status === "APROVADO" ? "Gerar Contrato" : "Baixar Contrato"}
+                      {projeto.status === "aprovado" ? "Gerar Contrato" : "Baixar Contrato"}
                     </Link>
                   </Button>
                 </div>

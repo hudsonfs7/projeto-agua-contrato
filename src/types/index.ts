@@ -31,6 +31,12 @@ export interface FaixaRenda {
   descricao: string;
 }
 
+export interface ServicoAdicional {
+  id: string;
+  descricao: string;
+  valor: number;
+}
+
 export interface Projeto {
   id: string;
   numeroEVTE: string;
@@ -47,6 +53,9 @@ export interface Projeto {
   faixaRendaId: number;
   faixaRenda?: FaixaRenda;
   status: StatusProjeto;
+  valorProjetoAgua: number;
+  valorProjetoEsgoto: number;
+  servicosAdicionais: ServicoAdicional[];
   dataInicio: Date;
   previsaoConclusao: Date | null;
   dataConclusao: Date | null;
@@ -121,11 +130,93 @@ export const MOCK_PROJETOS: Projeto[] = [
     numeroLotesComerciais: 5,
     faixaRendaId: 3,
     status: 'em_elaboracao',
+    valorProjetoAgua: 85000,
+    valorProjetoEsgoto: 120000,
+    servicosAdicionais: [
+      { id: '1', descricao: 'Consultoria Ambiental', valor: 15000 }
+    ],
     dataInicio: new Date('2023-03-10'),
     previsaoConclusao: new Date('2023-09-30'),
     dataConclusao: null,
     observacoes: 'Projeto em fase de elaboração de plantas e memoriais descritivos.',
     createdAt: new Date('2023-03-10'),
     updatedAt: new Date('2023-04-15'),
+  },
+  {
+    id: '2',
+    numeroEVTE: 'EVTE-2023-002',
+    tipoRede: 'agua',
+    responsavelId: '2',
+    titulo: 'Residencial Vista Verde',
+    descricao: 'Implementação de rede de água para loteamento residencial',
+    cidade: 'Campinas',
+    estado: 'SP',
+    bairro: 'Jardim América',
+    numeroLotesHabitacionais: 75,
+    numeroLotesComerciais: 0,
+    faixaRendaId: 2,
+    status: 'analise_inicial',
+    valorProjetoAgua: 45000,
+    valorProjetoEsgoto: 0,
+    servicosAdicionais: [],
+    dataInicio: new Date('2023-04-05'),
+    previsaoConclusao: new Date('2023-07-20'),
+    dataConclusao: null,
+    observacoes: 'Aguardando documentação complementar do cliente.',
+    createdAt: new Date('2023-04-05'),
+    updatedAt: new Date('2023-04-05'),
+  },
+  {
+    id: '3',
+    numeroEVTE: 'EVTE-2023-003',
+    tipoRede: 'esgoto',
+    responsavelId: '1',
+    titulo: 'Loteamento Empresarial Horizonte',
+    descricao: 'Projeto de rede de esgoto para polo empresarial',
+    cidade: 'Ribeirão Preto',
+    estado: 'SP',
+    bairro: 'Zona Industrial',
+    numeroLotesHabitacionais: 0,
+    numeroLotesComerciais: 30,
+    faixaRendaId: 7,
+    status: 'aprovado',
+    valorProjetoAgua: 0,
+    valorProjetoEsgoto: 230000,
+    servicosAdicionais: [
+      { id: '2', descricao: 'Estudo de Impacto Ambiental', valor: 28000 },
+      { id: '3', descricao: 'Assessoria Técnica', valor: 12500 }
+    ],
+    dataInicio: new Date('2023-02-15'),
+    previsaoConclusao: new Date('2023-06-30'),
+    dataConclusao: null,
+    observacoes: 'Projeto aprovado, aguardando liberação para início das obras.',
+    createdAt: new Date('2023-02-15'),
+    updatedAt: new Date('2023-05-01'),
+  },
+  {
+    id: '4',
+    numeroEVTE: 'EVTE-2022-015',
+    tipoRede: 'agua_esgoto',
+    responsavelId: '1',
+    titulo: 'Vila dos Lagos',
+    descricao: 'Conjunto residencial de alto padrão',
+    cidade: 'Jundiaí',
+    estado: 'SP',
+    bairro: 'Jardim Europa',
+    numeroLotesHabitacionais: 60,
+    numeroLotesComerciais: 5,
+    faixaRendaId: 5,
+    status: 'concluido',
+    valorProjetoAgua: 95000,
+    valorProjetoEsgoto: 110000,
+    servicosAdicionais: [
+      { id: '4', descricao: 'Projeto de Drenagem', valor: 35000 }
+    ],
+    dataInicio: new Date('2022-07-10'),
+    previsaoConclusao: new Date('2023-01-15'),
+    dataConclusao: new Date('2023-01-20'),
+    observacoes: 'Projeto concluído e entregue ao cliente.',
+    createdAt: new Date('2022-07-10'),
+    updatedAt: new Date('2023-01-20'),
   }
 ];
